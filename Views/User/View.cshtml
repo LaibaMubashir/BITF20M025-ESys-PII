@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = "_UserLayout";
+    @model StudentInterestSystem.Models.Student
+
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        text-align: left;
+        padding: 8px;
+        width: 50%;
+    }
+
+    thead {
+        text-align: center;
+        column-span: all;
+        padding: 10px;
+        width: 100%;
+    }
+</style>
+<h2 class="text-center mb-4"><b>@Model.FullName</b></h2>
+<hr>
+<div class="card">
+    <div class="container">
+
+        <table>
+
+            <tbody>
+                <tr>
+                    <td><strong>ID</strong></td>
+                    <td>@Model.Id</td>
+                </tr>
+                <tr>
+                    <td><strong>Roll Number</strong></td>
+                    <td>@Model.RollNumber</td>
+                </tr>
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td><strong>Gender</strong></td>
+                    <td>@Model.Gender</td>
+                </tr>
+                <tr>
+                    <td><strong>Date of Birth</strong></td>
+                    <td>@Model.DateOfBirth.ToString("dd-MMM-yyyy")</td>
+                </tr>
+                <tr>
+                    <td><strong>City</strong></td>
+                    <td>@Model.City</td>
+                </tr>
+                <tr>
+                    <td><strong>Interest</strong></td>
+                    <td>@Model.Interest</td>
+                </tr>
+                <tr>
+                    <td><strong>Department</strong></td>
+                    <td>@Model.Department</td>
+                </tr>
+                <tr>
+                    <td><strong>Degree Title</strong></td>
+                    <td>@Model.DegreeTitle</td>
+                </tr>
+                <tr>
+                    <td><strong>Subject</strong></td>
+                    <td>@Model.Subject</td>
+                </tr>
+                <tr>
+                    <td><strong>Start Date</strong></td>
+                    <td>@Model.StartDate.ToString("dd-MMM-yyyy")</td>
+                </tr>
+                <tr>
+                    <td><strong>End Date</strong></td>
+                    <td>@Model.EndDate.ToString("dd-MMM-yyyy")</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,60 @@
+﻿@model List<StudentInterestSystem.Models.ListViewModel>
+
+<head>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.7.0/dt-1.13.8/b-2.4.2/date-1.5.1/fc-4.3.0/r-2.5.0/sc-2.3.0/sb-1.6.0/sp-2.2.0/sl-1.7.0/datatables.min.css" rel="stylesheet">
+
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.7.0/dt-1.13.8/b-2.4.2/date-1.5.1/fc-4.3.0/r-2.5.0/sc-2.3.0/sb-1.6.0/sp-2.2.0/sl-1.7.0/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+</head>
+<h1>Students</h1>
+
+<table class="table" id="StudentsTable" border="1px" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Roll Number</th>
+            <th>Department</th>
+            <th>Degree</th>
+            <th>DOB</th>
+            <th>City</th>
+            <th>Interest</th>
+            <th style="width:30px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.FullName</td>
+                <td>@student.RollNumber</td>
+                <td>@student.Department</td>
+                <td>@student.DegreeTitle</td>
+                <td>@student.DOB.ToString("dd-MMM-yyyy")</td>
+                <td>@student.City</td>
+                <td>@student.Interest</td>
+                <td style ="width:10px">
+                    <a href="View/@student.Id">View</a>
+                    <a href="Edit/@student.Id">Edit</a>
+                    <a href="Delete/@student.Id">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#StudentsTable').DataTable({
+            "lengthMenu": [5, 10, 25, 30,50],
+            "pagingType": "full_numbers"
+        });
+    });
+
+</script>

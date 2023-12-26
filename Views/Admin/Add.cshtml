@@ -1,0 +1,275 @@
+﻿@model StudentInterestSystem.Models.AddStudentViewModel
+
+<style>
+    table {
+        width: 100%;
+        height:100%;
+    }
+
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    th, td{
+        text-align: left;
+        padding: 10px;
+    }
+    input
+    {
+        width:100%;
+        margin-right: 20px;
+
+    }
+    select
+    {
+        width:100%;
+    }
+</style>
+
+<h1>Add Student</h1>
+
+<table>
+    <form asp-action="Add" asp-controller="Admin" method="post" class="mt-5">
+    <tr>
+        <th colspan="2"><label asp-for="FullName">Full Name:</label></th>
+       
+
+        <th colspan="2"><label asp-for="RollNumber">Roll Number:</label></th>
+        
+
+        <th colspan="2"><label asp-for="Email">Email Address:</label></th>
+        
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div>
+                <input asp-for="FullName" /><br>
+                <span asp-validation-for="FullName" class="field-error"></span>
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+                <input asp-for="RollNumber" /><br>
+                <span asp-validation-for="RollNumber" class="field-error"></span>
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+                <input type="email" asp-for="Email" /><br>
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+        </td>
+
+    </tr>
+    <tr>
+        <th><label asp-for="Gender">Gender:</label></th>
+
+        <th><label asp-for="DateOfBirth">Date of Birth:</label></th>
+
+        <th colspan="2"><label asp-for="City">City:</label></th>
+
+        <th><label asp-for="Interest">Interest:</label></th>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <select asp-for="Gender">
+                    <option value="">Select an option</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select><br>
+                <span asp-validation-for="Gender" class="field-error"></span>
+
+            </div>
+        </td>
+        <td>
+            <div>
+                <input type="date" asp-for="DateOfBirth" /><br>
+                <span asp-validation-for="DateOfBirth" class="field-error"></span>
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+                <select asp-for="City">
+                    <option value="">Select an option</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Faisalabad">Faisalabad</option>
+                    <option value="Rawalpindi">Rawalpindi</option>
+                    <option value="Gujranwala">Gujranwala</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Multan">Multan</option>
+                    <option value="Peshawar">Peshawar</option>
+                    <option value="Quetta">Quetta</option>
+                    <option value="Sargodha">Sargodha</option>
+                    <option value="Sialkot">Sialkot</option>
+                    <option value="Bahawalpur">Bahawalpur</option>
+                    <option value="Sukkur">Sukkur</option>
+                    <option value="Jhang">Jhang</option>
+                    <option value="Sheikhupura">Sheikhupura</option>
+                    <option value="Larkana">Larkana</option>
+                    <option value="Gujrat">Gujrat</option>
+                    <option value="Mardan">Mardan</option>
+                    <option value="Kasur">Kasur</option>
+                    <option value="Rahim Yar Khan">Rahim Yar Khan</option>
+                    <option value="Sahiwal">Sahiwal</option>
+                    <option value="Okara">Okara</option>
+                    <option value="Wah Cantonment">Wah Cantonment</option>
+                    <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
+                    <option value="Mingora">Mingora</option>
+                    <option value="Mirpur Khas">Mirpur Khas</option>
+                    <option value="Chiniot">Chiniot</option>
+                    <option value="Nawabshah">Nawabshah</option>
+                    <option value="Kamoke">Kamoke</option>
+                    <option value="Burewala">Burewala</option>
+                    <option value="Jhelum">Jhelum</option>
+                    <option value="Sadiqabad">Sadiqabad</option>
+                    <option value="Khanewal">Khanewal</option>
+                    <option value="Hafizabad">Hafizabad</option>
+                    <option value="Kohat">Kohat</option>
+                    <option value="Jacobabad">Jacobabad</option>
+                    <option value="Shikarpur">Shikarpur</option>
+                    <option value="Muzaffargarh">Muzaffargarh</option>
+                    <option value="Khanpur">Khanpur</option>
+                    <option value="Gojra">Gojra</option>
+                    <option value="Bahawalnagar">Bahawalnagar</option>
+                    <option value="Abbottabad">Abbottabad</option>
+                    <option value="Mandi Bahauddin">Mandi Bahauddin</option>
+                    <option value="Khuzdar">Khuzdar</option>
+                    <option value="Swabi">Swabi</option>
+                    <option value="Dera Ismail Khan">Dera Ismail Khan</option>
+                    <option value="Chaman">Chaman</option>
+                    <option value="Charsadda">Charsadda</option>
+                    <!-- Add more cities here -->
+                </select>
+                <br>
+                <span asp-validation-for="City" class="field-error"></span>
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+                <div>
+                    <input class="form-control" list="List" asp-for="Interest" placeholder="Select your interest" required /><br />
+                    <datalist id="List">
+                         @if (Model.Interests != null)
+    {
+                            @foreach (var interest in Model.Interests)
+                            {
+                            <option value="@interest">@interest</option>
+                            }
+    }
+                    </datalist>
+                </div>
+                <br>
+
+                <span asp-validation-for="Interest" class="field-error"></span>
+            </div>
+        </td>
+
+    </tr>
+    <tr>
+        <th colspan="2"><label asp-for="Department">Department:</label></th>
+
+
+        <th colspan="2"><label asp-for="DegreeTitle">Degree Title:</label></th>
+
+
+        <th colspan="2"><label asp-for="Subject">Subject:</label></th>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div>
+                <select asp-for="Department">
+                    <option value="">Select an option</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Software Engineering">Software Engineering</option>
+                    <option value="Agriculture">Agriculture</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Architecture">Architecture</option>
+                    <option value="Business Administration">Business Administration</option>
+                    <option value="Chemical Engineering">Chemical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="Environmental Science">Environmental Science</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Geology">Geology</option>
+                    <option value="Hospitality Management">Hospitality Management</option>
+                    <option value="Journalism">Journalism</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Philosophy">Philosophy</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Sociology">Sociology</option>
+                    <option value="Statistics">Statistics</option>
+                    <option value="Theology">Theology</option>
+                    <option value="Veterinary Medicine">Veterinary Medicine</option>
+                    <option value="Zoology">Zoology</option>
+                </select>
+                <br />
+                <span asp-validation-for="Department" class="field-error"></span>
+
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+
+                <select asp-for="DegreeTitle">
+                    <option value="">Select an option</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="Bachelors Degree">Bachelors Degree</option>
+                    <option value="M.Phil Degree">M.Phil Degree</option>
+                    <option value="Post Graduate Diploma">Post Graduate Diploma</option>
+                    <option value="Doctorate">Doctorate</option>
+                    <option value="PostDoctorate">Post Doctorate</option>
+                    <!-- Add more degree titles here -->
+                </select>
+                <br>
+                <span asp-validation-for="DegreeTitle" class="field-error"></span>
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+                <input type="text" asp-for="Subject">
+                <br>
+                <span asp-validation-for="Subject" class="field-error"></span>
+            </div>
+        </td>
+
+    </tr>
+    <tr>
+        <th><label for="StartDate">Start Date:</label></th>
+
+        <th><label for="EndDate">End Date:</label></th>
+
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <input type="date" asp-for="StartDate">
+                <br>
+                <span asp-validation-for="StartDate" class="field-error"></span>
+            </div>
+        </td>
+        <td>
+            <div>
+                <input type="date" asp-for="EndDate">
+                <br>
+                <span asp-validation-for="EndDate" class="field-error"></span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <button type="submit" value="Create" onclick="goToListView()">Create</button></td>
+        <td>
+        <button type="button" onclick="goToListView()">Cancel</button>
+        </td>
+    </tr>  
+    </form>
+</table>
